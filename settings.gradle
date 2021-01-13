@@ -1,0 +1,4 @@
+rootProject.name = 'HotelPowerManagementApp'
+include 'core'
+include 'app'
+
