@@ -2,7 +2,7 @@ package domain;
 
 import Enums.State;
 
-public class Fan {
+public class Ac {
 
     private State state;
 

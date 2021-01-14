@@ -1,5 +1,7 @@
 package domain;
 
+import Enums.State;
+
 import java.util.List;
 
 public class Floor {
@@ -28,11 +30,24 @@ public class Floor {
     public void initialize(int mainCorridors, int subCorridors) {
         for (int i = 0; i < mainCorridors; i++) {
             MainCorridor mainCorridor = new MainCorridor();
+            Ac ac = new Ac();
+            ac.setState(State.ON);
+            Light light = new Light();
+            light.setState(State.ON);
+            mainCorridor.setAc(ac);
             this.getMainCorridors().add(mainCorridor);
         }
         for (int i = 0; i < subCorridors; i++) {
-            this.getSubCorridors().add(new SubCorridor());
+            SubCorridor subCorridor = new SubCorridor();
+            Ac ac = new Ac();
+            ac.setState(State.ON);
+            subCorridor.setAc(ac);
+            Light light = new Light();
+            light.setState(State.OFF);
+            subCorridor.setAc(ac);
+            this.getSubCorridors().add(subCorridor);
         }
+
     }
 
     public int getFloorNo() {

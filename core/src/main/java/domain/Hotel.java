@@ -1,34 +1,55 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Hotel {
 
-    private int floors;
+    private List<Floor> floor;
 
-    private int mainCorridors;
+    private int noOfFloors;
 
-    private int subCorridors;
+    private int noOfMainCorridors;
 
-    public int getFloors() {
-        return floors;
+    private int noOfSubCorridors;
+
+    public int getNoOfFloors() {
+        return noOfFloors;
     }
 
-    public void setFloors(int floors) {
-        this.floors = floors;
+    public void setNoOfFloors(int noOfFloors) {
+        this.noOfFloors = noOfFloors;
     }
 
-    public int getMainCorridors() {
-        return mainCorridors;
+    public int getNoOfMainCorridors() {
+        return noOfMainCorridors;
     }
 
-    public void setMainCorridors(int mainCorridors) {
-        this.mainCorridors = mainCorridors;
+    public void setNoOfMainCorridors(int noOfMainCorridors) {
+        this.noOfMainCorridors = noOfMainCorridors;
     }
 
-    public int getSubCorridors() {
-        return subCorridors;
+    public int getNoOfSubCorridors() {
+        return noOfSubCorridors;
     }
 
-    public void setSubCorridors(int subCorridors) {
-        this.subCorridors = subCorridors;
+    public void setNoOfSubCorridors(int noOfSubCorridors) {
+        this.noOfSubCorridors = noOfSubCorridors;
+    }
+
+    public List<Floor> getFloor() {
+        if (this.floor.isEmpty() && this.noOfFloors > 0) {
+            this.floor = new ArrayList<>();
+            for (int i = 0; i <= noOfFloors; i++) {
+                Floor floor = new Floor();
+                this.floor.add(floor);
+            }
+            return floor;
+        }
+        return floor;
+    }
+
+    public void setFloor(List<Floor> floor) {
+        this.floor = floor;
     }
 }
