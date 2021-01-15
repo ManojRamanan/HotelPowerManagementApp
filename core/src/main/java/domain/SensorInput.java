@@ -1,10 +1,14 @@
 package domain;
 
-public class Motion {
+import Enums.Action;
+
+public class SensorInput {
 
     private int floor;
 
     private int subCorridor ;
+
+    private Action action;
 
     public int getFloor() {
         return floor;
@@ -20,5 +24,13 @@ public class Motion {
 
     public void setSubCorridor(int subCorridor) {
         this.subCorridor = subCorridor;
+    }
+
+    public Action getAction() {
+        return action;
+    }
+
+    public void setAction(Action action) {
+        this.action = action;
     }
 }

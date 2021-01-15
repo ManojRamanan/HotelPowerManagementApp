@@ -38,10 +38,16 @@ public class Hotel {
     }
 
     public List<Floor> getFloor() {
-        if (this.floor.isEmpty() && this.noOfFloors > 0) {
+        if ((this.floor == null ||this.floor.isEmpty()) && this.noOfFloors > 0) {
             this.floor = new ArrayList<>();
-            for (int i = 0; i <= noOfFloors; i++) {
+            for (int i = 0; i < noOfFloors; i++) {
                 Floor floor = new Floor();
+                floor.setFloorNo(i+1);
+                List<MainCorridor> mainCorridors = new ArrayList<>();
+                List<SubCorridor> subCorridors = new ArrayList<>();
+                floor.setMainCorridors(mainCorridors);
+                floor.setSubCorridors(subCorridors);
+                floor.initialize(1, 2);
                 this.floor.add(floor);
             }
             return floor;

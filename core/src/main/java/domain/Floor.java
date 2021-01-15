@@ -35,6 +35,7 @@ public class Floor {
             Light light = new Light();
             light.setState(State.ON);
             mainCorridor.setAc(ac);
+            mainCorridor.setLight(light);
             this.getMainCorridors().add(mainCorridor);
         }
         for (int i = 0; i < subCorridors; i++) {
@@ -45,6 +46,7 @@ public class Floor {
             Light light = new Light();
             light.setState(State.OFF);
             subCorridor.setAc(ac);
+            subCorridor.setLight(light);
             this.getSubCorridors().add(subCorridor);
         }
 
