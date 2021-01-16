@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="HotelPowerManagementTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-01-16T15:58:58" hostname="LAPTOP-CF01AJBC" time="0.017">
+<testsuite name="HotelPowerManagementTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-16T20:46:00" hostname="LAPTOP-CF01AJBC" time="0.015">
   <properties/>
-  <testcase name="whenThereisNoMovementInFloors" classname="HotelPowerManagementTests" time="0.013"/>
-  <testcase name="whenThereisMovementInFloorsSwitchOnLightAndPowerShouldBeBelowMaximum" classname="HotelPowerManagementTests" time="0.004"/>
-  <system-out><![CDATA[---------------------------------------------------
-Floor 1
-Main corridor 1 Light 1 : ON AC  :ON
-Sub corridor 1 Light 1 : OFF AC  :OFF
-Sub corridor 2 Light 2 : ON AC  :ON
+  <testcase name="whenThereIsNoMovementInFloors" classname="HotelPowerManagementTests" time="0.015"/>
+  <system-out><![CDATA[Floor 1
+Main corridor 1 Light 1 : OFF AC  :ON
+Sub corridor 1 Light 1 : OFF AC  :ON
+Sub corridor 2 Light 2 : OFF AC  :ON
 Floor 2
-Main corridor 1 Light 1 : ON AC  :ON
+Main corridor 1 Light 1 : OFF AC  :ON
 Sub corridor 1 Light 1 : OFF AC  :ON
 Sub corridor 2 Light 2 : OFF AC  :ON
 ---------------------------------------------------

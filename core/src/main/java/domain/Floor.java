@@ -27,7 +27,23 @@ public class Floor {
         this.subCorridors = subCorridors;
     }
 
-    public void initialize(int mainCorridors, int subCorridors) {
+    public void initializeCorridors(int mainCorridors, int subCorridors) {
+        for (int i = 0; i < mainCorridors; i++) {
+            MainCorridor mainCorridor = new MainCorridor();
+            Ac ac = new Ac();
+            ac.setState(State.ON);
+            Light light = new Light();
+            light.setState(State.OFF);
+            mainCorridor.setAc(ac);
+            mainCorridor.setLight(light);
+            this.getMainCorridors().add(mainCorridor);
+        }
+        intializeSubCorridor(subCorridors);
+
+    }
+
+
+    public void initializeDefaultCorridorNightTime(int mainCorridors, int subCorridors) {
         for (int i = 0; i < mainCorridors; i++) {
             MainCorridor mainCorridor = new MainCorridor();
             Ac ac = new Ac();
@@ -38,6 +54,11 @@ public class Floor {
             mainCorridor.setLight(light);
             this.getMainCorridors().add(mainCorridor);
         }
+        intializeSubCorridor(subCorridors);
+
+    }
+
+    private void intializeSubCorridor(int subCorridors) {
         for (int i = 0; i < subCorridors; i++) {
             SubCorridor subCorridor = new SubCorridor();
             Ac ac = new Ac();
@@ -49,8 +70,8 @@ public class Floor {
             subCorridor.setLight(light);
             this.getSubCorridors().add(subCorridor);
         }
-
     }
+
 
     public int getFloorNo() {
         return floorNo;

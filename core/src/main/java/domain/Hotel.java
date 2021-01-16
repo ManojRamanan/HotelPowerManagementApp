@@ -11,6 +11,10 @@ public class Hotel {
         this.floors = builder.floors;
     }
 
+    public Hotel(NightTimeBuilder nightTimeBuilder) {
+        this.floors = nightTimeBuilder.floors;
+    }
+
 
     public List<Floor> getFloors() {
         return floors;
@@ -23,6 +27,12 @@ public class Hotel {
     public static Builder builder(){
         return new Builder();
     }
+
+
+    public static NightTimeBuilder nightTimeBuilder(){
+        return new NightTimeBuilder();
+    }
+
 
 
     public static class Builder {
@@ -59,13 +69,8 @@ public class Hotel {
             if ((this.floors == null || this.floors.isEmpty()) && this.noOfFloors > 0) {
                 this.floors = new ArrayList<>();
                 for (int i = 0; i < noOfFloors; i++) {
-                    Floor floor = new Floor();
-                    floor.setFloorNo(i + 1);
-                    List<MainCorridor> mainCorridors = new ArrayList<>();
-                    List<SubCorridor> subCorridors = new ArrayList<>();
-                    floor.setMainCorridors(mainCorridors);
-                    floor.setSubCorridors(subCorridors);
-                    floor.initialize(1, 2);
+                    Floor floor = intializeFloors(i);
+                    floor.initializeCorridors(1, 2);
                     this.floors.add(floor);
                 }
             }
@@ -73,6 +78,61 @@ public class Hotel {
         }
 
 
+    }
+
+    public static class NightTimeBuilder {
+
+        private int noOfFloors;
+
+        private int noOfMainCorridors;
+
+        private int noOfSubCorridors;
+
+        private List<Floor> floors;
+
+        public NightTimeBuilder noOfFloors(int noOfFloors) {
+            this.noOfFloors = noOfFloors;
+            return this;
+        }
+
+        public NightTimeBuilder noOfMainCorridors(int noOfMainCorridors) {
+            this.noOfMainCorridors = noOfMainCorridors;
+            return this;
+        }
+
+        public NightTimeBuilder noOfSubCorridors(int noOfSubCorridors) {
+            this.noOfSubCorridors = noOfSubCorridors;
+            return this;
+        }
+
+        public NightTimeBuilder floors(int noOfSubCorridors) {
+            this.noOfSubCorridors = noOfSubCorridors;
+            return this;
+        }
+
+        public Hotel build() {
+            if ((this.floors == null || this.floors.isEmpty()) && this.noOfFloors > 0) {
+                this.floors = new ArrayList<>();
+                for (int i = 0; i < noOfFloors; i++) {
+                    Floor floor = intializeFloors(i);
+                    floor.initializeDefaultCorridorNightTime(1, 2);
+                    this.floors.add(floor);
+                }
+            }
+            return new Hotel(this);
+        }
+
+
+    }
+
+    private static Floor intializeFloors(int i) {
+        Floor floor = new Floor();
+        floor.setFloorNo(i + 1);
+        List<MainCorridor> mainCorridors = new ArrayList<>();
+        List<SubCorridor> subCorridors = new ArrayList<>();
+        floor.setMainCorridors(mainCorridors);
+        floor.setSubCorridors(subCorridors);
+        return floor;
     }
 
 
