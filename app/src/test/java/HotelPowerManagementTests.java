@@ -4,42 +4,48 @@ import domain.Hotel;
 import domain.SensorInput;
 import org.junit.Assert;
 import org.junit.Test;
-import services.DefaultDeviceController;
+import services.*;
 
 
 public class HotelPowerManagementTests {
 
     @Test
-    public void whenThereisMovementInFloors(){
-        DefaultDeviceController defaultDeviceController = new DefaultDeviceController();
-        Hotel hotel = new Hotel();
-        hotel.setNoOfFloors(2);
-        hotel.setNoOfMainCorridors(1);
-        hotel.setNoOfSubCorridors(2);
-        SensorInput sensorInput1 = new SensorInput();
-        sensorInput1.setFloor(1);
-        sensorInput1.setSubCorridor(2);
-        sensorInput1.setAction(Action.MOVEMENT);
-        defaultDeviceController.movementInFloor(hotel,sensorInput1);
+    public void whenThereisMovementInFloorsSwitchOnLightAndPowerShouldBeBelowMaximum() {
+        DeviceContoller deviceContoller = new DefaultDeviceController();
+        Hotel hotel = Hotel.builder().noOfFloors(2).noOfMainCorridors(1).noOfSubCorridors(2).build();
+        SensorInput sensorInput = SensorInput.builder().floor(1).subCorridor(2).build();
+        Command movementInFloor = new MovementInFloor(hotel, sensorInput);
+        deviceContoller.setCommand(movementInFloor);
+        deviceContoller.execute();
+
         System.out.println("---------------------------------------------------");
-        Assert.assertTrue(hotel.getFloor().get(sensorInput1.getFloor()-1).getSubCorridors()
-                .get(sensorInput1.getSubCorridor()-1).getLight().getState().equals(State.ON));
+        Assert.assertTrue(hotel.getFloors().get(sensorInput.getFloor() - 1).getSubCorridors()
+                .get(sensorInput.getSubCorridor() - 1).getLight().getState().equals(State.ON));
+
+        boolean isPowerUsageUnderControl = PowerConsumption.getInstance().checkPowerLimitIsInRange(hotel, sensorInput);
+
+        Assert.assertTrue(isPowerUsageUnderControl);
+
+
+
     }
 
+
+
+
+
     @Test
-    public void whenThereisNoMovementInFloors(){
-        DefaultDeviceController defaultDeviceController = new DefaultDeviceController();
-        Hotel hotel = new Hotel();
-        hotel.setNoOfFloors(2);
-        hotel.setNoOfMainCorridors(1);
-        hotel.setNoOfSubCorridors(2);
-        SensorInput sensorInput1 = new SensorInput();
-        sensorInput1.setFloor(1);
-        sensorInput1.setSubCorridor(2);
-        sensorInput1.setAction(Action.NOMOVEMENT);
-        defaultDeviceController.noMoment(hotel,sensorInput1);
+    public void whenThereisNoMovementInFloors() {
+        DeviceContoller deviceContoller = new DefaultDeviceController();
+        Hotel hotel = Hotel.builder().noOfFloors(2).noOfMainCorridors(1).noOfSubCorridors(2).build();
+        SensorInput sensorInput = SensorInput.builder().floor(1).subCorridor(2).build();
+        Command noMoventInFloor = new NoMoventInFloor(hotel, sensorInput);
+        deviceContoller.setCommand(noMoventInFloor);
+        deviceContoller.execute();
         System.out.println("---------------------------------------------------");
-        Assert.assertTrue(hotel.getFloor().get(sensorInput1.getFloor()-1).getSubCorridors()
-                .get(sensorInput1.getSubCorridor()-1).getLight().getState().equals(State.OFF));
+        Assert.assertTrue(hotel.getFloors().get(sensorInput.getFloor() - 1).getSubCorridors()
+                .get(sensorInput.getSubCorridor() - 1).getLight().getState().equals(State.OFF));
     }
+
+
 }

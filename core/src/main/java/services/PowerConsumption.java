@@ -1,11 +1,21 @@
 package services;
 import Enums.State;
-import domain.Floor;
-import domain.Light;
-import domain.MainCorridor;
-import domain.SubCorridor;
+import domain.*;
 
 public class PowerConsumption {
+
+
+    private static PowerConsumption instance;
+    private PowerConsumption()
+    {
+        System.out.println("Singleton is Instantiated.");
+    }
+    public static PowerConsumption getInstance()
+    {
+        if (instance == null)
+            instance = new PowerConsumption();
+        return instance;
+    }
 
     public Integer fetchMaxPowerLimit(Floor floor){
         return floor.getMainCorridors().size() * 15 + floor.getSubCorridors().size() *10;
@@ -45,5 +55,18 @@ public class PowerConsumption {
         return sum;
 
     }
+
+    public boolean checkPowerLimitIsInRange(Hotel hotel,SensorInput sensorInput){
+
+        Integer totalPowerConsumption = PowerConsumption.getInstance().
+                calculateTotalPowerConsumption(hotel.getFloors().get(sensorInput.getFloor() - 1));
+
+        Integer maxPowerLimit = PowerConsumption.getInstance().
+                fetchMaxPowerLimit(hotel.getFloors().get(sensorInput.getFloor() - 1));
+
+        return totalPowerConsumption > maxPowerLimit;
+    }
+
+
 
 }

@@ -1,7 +1,8 @@
+Singleton is Instantiated.
 	Floor 1
 &Main corridor 1 Light 1 : ON AC  :ON
 'Sub corridor 1 Light 1 : OFF AC  :OFF
-%Sub corridor 2 Light 2 : ON AC  :ON
+&Sub corridor 2 Light 2 : ON AC  :OFF
 	Floor 2
 &Main corridor 1 Light 1 : ON AC  :ON
 &Sub corridor 1 Light 1 : OFF AC  :ON

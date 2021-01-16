@@ -2,13 +2,20 @@ package domain;
 
 import Enums.Action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SensorInput {
 
     private int floor;
 
     private int subCorridor ;
 
-    private Action action;
+    public SensorInput(Builder builder) {
+        this.floor = builder.floor;
+        this.subCorridor = builder.subCorridor;
+    }
+
 
     public int getFloor() {
         return floor;
@@ -26,11 +33,34 @@ public class SensorInput {
         this.subCorridor = subCorridor;
     }
 
-    public Action getAction() {
-        return action;
+    public static Builder builder(){
+        return new Builder();
     }
 
-    public void setAction(Action action) {
-        this.action = action;
+
+    public static class Builder {
+
+        private int floor;
+
+        private int subCorridor;
+
+        public Builder floor(int floor) {
+            this.floor = floor;
+            return this;
+        }
+
+        public Builder subCorridor(int subCorridor) {
+            this.subCorridor = subCorridor;
+            return this;
+        }
+
+
+        public SensorInput build() {
+            return new SensorInput(this);
+        }
+
+
     }
+
+
 }
