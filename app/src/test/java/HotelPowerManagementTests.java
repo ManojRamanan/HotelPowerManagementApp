@@ -21,12 +21,8 @@ public class HotelPowerManagementTests {
         System.out.println("---------------------------------------------------");
         Assert.assertTrue(hotel.getFloors().get(sensorInput.getFloor() - 1).getSubCorridors()
                 .get(sensorInput.getSubCorridor() - 1).getLight().getState().equals(State.ON));
-
         boolean isPowerUsageUnderControl = PowerConsumption.getInstance().checkPowerLimitIsInRange(hotel, sensorInput);
-
         Assert.assertTrue(isPowerUsageUnderControl);
-
-
 
     }
 

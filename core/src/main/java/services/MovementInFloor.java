@@ -24,7 +24,7 @@ public class MovementInFloor implements Command {
     }
 
     private void adjustPowerUsage() {
-        if (PowerConsumption.getInstance().checkPowerLimitIsInRange(hotel,sensorInput)) {
+        if (!PowerConsumption.getInstance().checkPowerLimitIsInRange(hotel,sensorInput)) {
             for (int i = 0; i < hotel.getFloors().get(sensorInput.getFloor() - 1).getSubCorridors().size(); i++) {
                 hotel.getFloors().get(sensorInput.getFloor() - 1).getSubCorridors().get(i).getAc().setState(State.OFF);
                 if(PowerConsumption.getInstance().checkPowerLimitIsInRange(hotel,sensorInput)){
