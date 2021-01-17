@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="HotelPowerManagementTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-16T20:46:00" hostname="LAPTOP-CF01AJBC" time="0.015">
+<testsuite name="HotelPowerManagementTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-01-17T06:58:00" hostname="JLT01985L" time="0.047">
   <properties/>
-  <testcase name="whenThereIsNoMovementInFloors" classname="HotelPowerManagementTests" time="0.015"/>
+  <testcase name="whenThereIsMovementInFloorsPowerShouldBeBelowMaximum" classname="HotelPowerManagementTests" time="0.038"/>
+  <testcase name="whenThereIsNoMovementInFloors" classname="HotelPowerManagementTests" time="0.003"/>
+  <testcase name="whenThereIsMovementInFloors" classname="HotelPowerManagementTests" time="0.001"/>
+  <testcase name="switchOnMainCorridorLightDuringNight" classname="HotelPowerManagementTests" time="0.004"/>
   <system-out><![CDATA[Floor 1
-Main corridor 1 Light 1 : OFF AC  :ON
+Main corridor 1 Light 1 : ON AC  :ON
+Sub corridor 1 Light 1 : OFF AC  :OFF
+Sub corridor 2 Light 2 : ON AC  :ON
+Floor 2
+Main corridor 1 Light 1 : ON AC  :ON
+Sub corridor 1 Light 1 : OFF AC  :ON
+Sub corridor 2 Light 2 : OFF AC  :ON
+---------------------------------------------------
+Floor 1
+Main corridor 1 Light 1 : ON AC  :ON
 Sub corridor 1 Light 1 : OFF AC  :ON
 Sub corridor 2 Light 2 : OFF AC  :ON
 Floor 2
-Main corridor 1 Light 1 : OFF AC  :ON
+Main corridor 1 Light 1 : ON AC  :ON
+Sub corridor 1 Light 1 : OFF AC  :ON
+Sub corridor 2 Light 2 : OFF AC  :ON
+---------------------------------------------------
+Floor 1
+Main corridor 1 Light 1 : ON AC  :ON
+Sub corridor 1 Light 1 : OFF AC  :OFF
+Sub corridor 2 Light 2 : ON AC  :ON
+Floor 2
+Main corridor 1 Light 1 : ON AC  :ON
+Sub corridor 1 Light 1 : OFF AC  :ON
+Sub corridor 2 Light 2 : OFF AC  :ON
+---------------------------------------------------
+Floor 1
+Main corridor 1 Light 1 : ON AC  :ON
+Sub corridor 1 Light 1 : OFF AC  :ON
+Sub corridor 2 Light 2 : OFF AC  :ON
+Floor 2
+Main corridor 1 Light 1 : ON AC  :ON
 Sub corridor 1 Light 1 : OFF AC  :ON
 Sub corridor 2 Light 2 : OFF AC  :ON
 ---------------------------------------------------
